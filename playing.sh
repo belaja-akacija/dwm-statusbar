@@ -9,8 +9,8 @@ then
   then
     TITLE=$(echo $TITLE | cut -c1-30)...
     echo "$TITLE"
-else
-  echo "$TITLE"
+  else
+    echo "$TITLE"
   fi
 else
   exit 0
