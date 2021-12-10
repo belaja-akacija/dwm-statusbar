@@ -6,7 +6,7 @@ static const Block blocks[] = {
   { "",      "sensors | grep 'Package id 0:' | awk '{print substr($4,2)}'" , 20, 0 },
   {"Mem: ",  "free -h | awk '/^Mem/ { print $7\"/\"$2 }' | sed s/i//g"     , 10, 0 },
   {"Disk: ", "df -h /dev/sda3 | awk '/dev/ { print $4 }'"                  , 60, 0 },
-  { "",   "battery-stat.sh"                                                , 10, 0 },
+  { "",      "battery-stat.sh"                                             , 10, 0 },
   {"",       "date '+%b %d (%a) %R'"                                       , 5 , 0 }
 };
 
