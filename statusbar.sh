@@ -19,22 +19,28 @@ Main()
     then
 
       TITLE=$(cmus-remote -Q | grep 'file' | sed -e 's/file\s\/.\+\///g' -e 's/\..\+//g')
-      if [ ${#TITLE} -gt "40" ];
+      if [ ${#TITLE} -gt "30" ];
       then
 
+        x=0
         y=10
         i=0
-        while (( $i <= ( ${#TITLE}/4 ) ));
+        sleep 1
+        #while (( $i <= ( ${#TITLE}-10 ) ));
+        while (( $i <= (25) )); # this loop needs to be fixed, kinda horrific at the moment
         do
+
           music_check=$(cmus-remote -Q | grep 'status' | cut -d ' ' -f 2-)
           if [ ! $music_check = "playing" ];
           then
+
             break
           else
-          xsetroot -name "${TITLE:x:y}... | $UPTIME | $SENSORS | Mem: $MEM | $DISK | $BATTERY | $DATE"
+
+            xsetroot -name "${TITLE:0:y}... | $UPTIME | $SENSORS | Mem: $MEM | $DISK | $BATTERY | $DATE"
             let y++
             let i++
-            sleep 0.7
+            sleep 0.25
             tput cuu1
             tput el
           fi
@@ -52,6 +58,7 @@ Main()
         Main
       fi
     else
+
       xsetroot -name "$UPTIME | $SENSORS | Mem: $MEM | $DISK | $BATTERY | $DATE"
       Main
     fi
