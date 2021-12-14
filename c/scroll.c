@@ -10,10 +10,14 @@ int main(void)
   /*char t = s;*/
   char *tp = malloc(100);
   char m[1];
-  char input[100] = "Test       ";
+  char input[100];
 
-  /*scanf("%s", input);*/
+  printf("Enter string to scroll: ");
+  // takes only one word at a time. How do I make it take the entire string from input?
+  scanf("%s", input);
+  system("clear");
   strcpy(s, input);
+  prepend(s, "     ");
   strcpy(tp, s);
   int len = strlen(s);
 
@@ -21,11 +25,15 @@ int main(void)
     /*printf("%d", len);*/
     for (int i = 0; i < len; ++i) {
       m[0] = s[len-1];
-      prepend(tp, " ");
-      tp[0] = m[0];
+      // to reverse direction, uncomment
+      /*prepend(tp, " ");*/
+      /*tp[0] = m[0];*/
       for (int j = 0; j < len; ++j){
-        s[j] = tp[j];
+        /*s[j] = tp[j];*/
+        s[j] = tp[j+1];
       }
+      // comment out, to reverse direction
+      s[len-1] = tp[0];
       printf("%s\n", s);
       usleep(200000);
       system("clear");
@@ -33,13 +41,4 @@ int main(void)
     }
 
   }
-  /*char t[10];*/
-  /*char* s = t;*/
-  /*scanf("%s", t);*/
-  /*printf("\nOutput: %s\n", s);*/
-
-  /*while (*s != '\0') {*/
-  /*printf("%c :: %p\n", *s, s);*/
-  /*s++;*/
-  /*}*/
 }
